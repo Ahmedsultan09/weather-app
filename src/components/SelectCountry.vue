@@ -18,11 +18,12 @@
           v-for="(city, index) in filteredCities"
           :key="'city' + index"
           @click="setState(city)"
-          v-show="toggleSelect && searchText != ''"
+          v-show="toggleSelect "
         >
           {{ city }}
         </li>
       </ul>
+      <div v-if="choosenCity != ''" class="text-white text-3xl">Choosen City: {{choosenCity}} <i class="fa-solid fa-check check-icon "></i></div>
       <button class="btn" @click="getData">See Result</button>
     </div>
   </div>
@@ -86,9 +87,9 @@ export default {
       }
     },
     setState(e) {
-      this.toggleSelect = false;
-      this.searchText = e;
+      this.searchText = '';
       this.choosenCity = e;
+      this.toggleSelect = false;
     },
   },
 
@@ -238,5 +239,10 @@ i:hover {
 
 .cities-list li:hover {
   background-color: #1e213a;
+}
+
+.check-icon {
+  color: green;
+  font-size: 2rem;
 }
 </style>
